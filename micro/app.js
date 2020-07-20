@@ -28,5 +28,6 @@ mongoose.connect(db, {
   
 const port = process.env.PORT || 5500;
 app.use('/mailer',require('./routes/sendmail'))
+app.use('/predefined_messages',require('./routes/messages'));
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
