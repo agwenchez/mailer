@@ -4,13 +4,12 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
 // const { default: Axios } = require('axios');
-const Messages = require('../models/Pre-msg');const { eventNames } = require('../models/Pre-msg');
-;
+const Messages = require('../models/Pre-msg');;
 
 const transporter = nodemailer.createTransport(
     sendgridTransport({
         auth: {
-            api_key: ENV.api_key
+            api_key: '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'
         }
     })
 );
@@ -56,7 +55,7 @@ router.post('/sendmail', (req, res) => {
 
         Messages.findOne({name:header}).then( result =>{
 
-            // console.log(result);
+            console.log(result);
             // res.status(200).send(result);
             return res.status(200).send(
                 transporter.sendMail({
