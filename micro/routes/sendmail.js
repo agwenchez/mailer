@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
-
+require('dotenv').config();
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
 // const { default: Axios } = require('axios');
-const Messages = require('../models/Pre-msg');;
+const Messages = require('../models/Pre-msg');
+const API_KEY = process.env.api_key;
 
 const transporter = nodemailer.createTransport(
     sendgridTransport({
         auth: {
-            api_key: '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'
+            api_key: `${API_KEY}`
         }
     })
 );
