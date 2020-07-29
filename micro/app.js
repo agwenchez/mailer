@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-   
+require('dotenv').config(); 
 
 const app = express();
 
@@ -25,6 +25,8 @@ mongoose.connect(db, {
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
+
+  console.log("MY_CRED:"+process.env.API_KEY); 
   
 const port = process.env.PORT || 5500;
 app.use('/mailer',require('./routes/sendmail'))
