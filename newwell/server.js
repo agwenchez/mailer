@@ -22,7 +22,7 @@ mongoose.connect(db, {
   .catch(err => console.log(err));
 
   
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 // default route
 app.get('/',(req,res)=>{
     res.json({msg:"server route works"});

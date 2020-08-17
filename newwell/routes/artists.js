@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const artist = require('../models/Artists');
+// const { delete } = require('../../micro/routes/sendmail');
 
 
 // default route
@@ -38,7 +39,9 @@ router.get('/artist', (req,res)=>{
 router.post('/create-artist', (req, res) => {
     const {
         name,
-        email
+        email,
+        phone_number
+      
     } = req.body;
 
     artist.findOne({
@@ -52,7 +55,8 @@ router.post('/create-artist', (req, res) => {
             // create new artist
             const newArtist = new artist({
                 name,
-                email
+                email,
+                phone_number
             })
             newArtist.save()
                 .then(
@@ -68,5 +72,15 @@ router.post('/create-artist', (req, res) => {
     })
 
 })
+
+
+
+// delete artist by ID
+router.delete('/delete/:id', (req, res)=>{
+    artist.findById(req.params.id).then( result => {
+        result.remove().then( ()=>res.send('deleted successfully'));
+    }).catch(err => res.status(404).json({sucees:false}));
+})
+
 
 module.exports=router;

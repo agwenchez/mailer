@@ -11,6 +11,10 @@ email:{
     required: true,
     type: String
 },
+phone_number:{
+    required: true,
+    type: String
+},
 date:{
     type: Date,
     default:Date.now()

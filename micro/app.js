@@ -26,10 +26,10 @@ mongoose.connect(db, {
   .catch(err => console.log(err));
 
 
-  console.log("MY_CRED:"+process.env.API_KEY); 
+  // console.log("MY_CRED:"+process.env.API_KEY); 
   
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 6000;
 app.use('/mailer',require('./routes/sendmail'))
-app.use('/predefined_messages',require('./routes/messages'));
+app.use('/messages',require('./routes/messages'));
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
